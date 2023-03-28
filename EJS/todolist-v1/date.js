@@ -1,5 +1,5 @@
 //module.exports = "hello";
-module.exports.getDate = function (){
+exports.getDate = function (){
     
     let today = new Date();
     //var day = "";
@@ -12,7 +12,7 @@ module.exports.getDate = function (){
     return today.toLocaleString("en-US", options);
 }
 
-module.exports.getDay = function (){
+exports.getDay = function (){
     
     let today = new Date();
     //var day = "";
