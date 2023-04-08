@@ -67,9 +67,24 @@ Fruit.find() //callbacks on model is deprecated, use then in the new way
   //   console.log(err)
   //   mongoose.connection.close()
   // }else {
-    mongoose.connection.close()
+   // mongoose.connection.close()
     fruits.forEach(function(fruit){
       console.log(fruit.name);
     })
     //}
+  })
+
+  Fruit.updateOne({_id: "64310a2a2412ed825e820ccd"}, {name: "peach"})
+  .then(function(err){
+    console.log("successfully updated documnet")
+  })
+
+  Fruit.deleteOne({name: "Kiwi"}, {_id: "64310a2a2412ed825e820ccd"})  //using Fruit collection and not Model
+  .then(function(err){
+    console.log("successfully deleted kiwi from database")
+  })
+
+  Person.deleteMany({name: "Yashu"})
+  .then(function(err){
+    console.log("Successfully deleted all doc")
   })
