@@ -27,17 +27,39 @@ const fruit = new Fruit({ //add data into collection
 
 const personSchema = new mongoose.Schema({
   name: String,
-  Age: Number
+  Age: Number,
+  favouriteFruit: fruitSchema
 });
 
 const Person = mongoose.model("Person", personSchema);
 
-const person = new Person({
-  name: "Yashu",
-  Age: 7
-});
+const pineapple = new Fruit ({
+  name: "Pineapple",
+  rating: 9,
+  review: "Great Fruit"
+})
+pineapple.save();
 
-//person.save()
+const mango = new Fruit({
+  name: "mango",
+  rating: 8,
+  review: "Summer's Fruit"
+})
+mango.save();
+
+// const = person= new Person ({
+//   name: "Amy",
+//   age: 12,
+//   favouriteFruit: pineapple
+// })
+
+const person = new Person({
+  name: "John",
+  age: 12,
+  favouriteFruit: mango
+})
+
+person.save()
 
 // const kiwi = new Fruit({
 //   name: "Kiwi",
@@ -84,7 +106,7 @@ Fruit.find() //callbacks on model is deprecated, use then in the new way
     console.log("successfully deleted kiwi from database")
   })
 
-  Person.deleteMany({name: "Yashu"})
+  Person.deleteMany({name: "John"}) //deletes all occurances of John in the database
   .then(function(err){
     console.log("Successfully deleted all doc")
   })
