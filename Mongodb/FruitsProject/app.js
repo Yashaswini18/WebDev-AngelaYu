@@ -44,12 +44,25 @@ const banana = new Fruit({
   review: "Sweet"
 })
 
-const defaultItems = [kiwi, banana]
+// const defaultItems = [kiwi, banana]
 
-Fruit.insertMany(defaultItems).then(function(err){
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("Successfully saved all the fruits to fruitsDB")
-  }
-});
+// Fruit.insertMany(defaultItems).then(function(err){ //insert on the Fruit model
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Successfully saved all the fruits to fruitsDB")
+//   }
+// });
+
+Fruit.find() //callbacks on model is deprecated, use then in the new way
+.then(function(fruits){
+  // if (err){ //commenting this as it's printing the whole database
+  //   console.log(err)
+  //   mongoose.connection.close()
+  // }else {
+    mongoose.connection.close()
+    fruits.forEach(function(fruit){
+      console.log(fruit.name);
+    })
+    //}
+  })
