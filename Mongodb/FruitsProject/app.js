@@ -16,4 +16,18 @@ const fruit = new Fruit({
   review: "Good"
 });
 
-fruit.save();
+//fruit.save() //save it once or it'll add the same data again and again
+
+const personSchema = new mongoose.Schema({
+  name: String,
+  Age: Number
+});
+
+const Person = mongoose.model("Person", personSchema);
+
+const person = new Person({
+  name: "Yashu",
+  Age: 7
+});
+
+person.save()
