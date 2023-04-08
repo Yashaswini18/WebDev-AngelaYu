@@ -3,8 +3,15 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB');
 
 const fruitSchema = new mongoose.Schema({ //the db will follow this schema
-  name: String,
-  rating: Number,
+  name: {
+    type: String, 
+    required: [true, "No name specified"] //name validator
+  },
+  rating: {
+    type: Number,
+    min: 1, //validator for rating
+    max: 10
+  },
   review: String
 });
 
@@ -30,19 +37,19 @@ const person = new Person({
   Age: 7
 });
 
-person.save()
+//person.save()
 
-const kiwi = new Fruit({
-  name: "Kiwi",
-  rating: 10,
-  review: "Okayish"
-})
+// const kiwi = new Fruit({
+//   name: "Kiwi",
+//   rating: 10,
+//   review: "Okayish"
+// })
 
-const banana = new Fruit({
-  name: "Banana",
-  rating: 9,
-  review: "Sweet"
-})
+// const banana = new Fruit({
+//   name: "Banana",
+//   rating: 9,
+//   review: "Sweet"
+// })
 
 // const defaultItems = [kiwi, banana]
 
